@@ -1,5 +1,6 @@
 <?php
 // config/db.php
+
 // bon hna mdina brk les variable
 $host = 'localhost';
 $dbname = 'Vendo'; 
