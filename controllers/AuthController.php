@@ -14,7 +14,7 @@ $mdp_clair = $_POST['password']; // Le mot de passe tapé par l'utilisateur
 if (strlen($mdp_clair) < 10) {
     $erreur = "Le mot de passe doit faire au moins 10 caractères !";
     echo $erreur;
-    include '../views/inscription.php'; // On réaffiche le formulaire avec l'erreur
+    header('location: ../views/inscription.php'); // Redirection vers la page d'inscription avec l'erreur
     exit(); // On arrête tout ici, on n'enregistre rien !
 }
 

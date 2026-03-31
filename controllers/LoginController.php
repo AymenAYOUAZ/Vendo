@@ -14,15 +14,16 @@ if ($user) {
     // L'utilisateur existe, on vérifie le mot de passe
     if (password_verify($mdp_saisi, $user['mot_de_passe'])) {
         echo "Connexion réussie ! Bienvenue " . $user['pseudo'] . " !";
-        include '../views/login.php';
-    } else {
+        header('location: ../index.php'); // Redirection vers la page d'accueil après connexion
+        exit();
+        } else {
         echo "Mot de passe incorrect.";
-        include '../views/login.php';
+        header('location: ../views/login.php');
         exit();
     }
 } else {
     echo "Aucun utilisateur trouvé avec cet email.";
-    include '../views/login.php';
+    header('location: ../views/login.php');
     exit();
 }
 
