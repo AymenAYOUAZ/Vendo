@@ -14,7 +14,7 @@ function ajouterUtilisateur($pdo, $email, $mdp_hache, $username) {
     return $stmt->execute([  // hna kayn l execution de la requete w hna kayn l protection contre les injections SQL, w hna kayn l insertion des données dans la base de données
         'email' => $email,
         'mdp'   => $mdp_hache,
-        'username' => $username
+        'username' => $username       // hna kayn l insertion des données dans la base de données
     ]);
 }
 // Fonction pour récupérer un utilisateur par son email (utile pour la connexion)
