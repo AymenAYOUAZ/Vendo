@@ -9,7 +9,7 @@
     <section class="container">
         <h2>Déposer une annonce</h2>
 
-        <form action="../controllers/AnnonceController.php" method="POST" enctype="multipart/form-data">
+        <form action="/Vendo/controllers/AnnonceController.php" method="POST" enctype="multipart/form-data">
             
             <div class="form-group">
                 <label for="titre">Nom de l'annonce :</label>

@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connexion</title>
 </head>
 <body>
-    <form action="../controllers/LoginController.php" method="POST">
     <h2>Connexion</h2>
-    
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Mot de passe" required>
-    
-    <button type="submit">Se connecter</button>
-</form>
+
+    <form action="/Vendo/controllers/LoginController.php" method="POST">
+        <input type="email" name="email" placeholder="Email" required><br><br>
+        <input type="password" name="password" placeholder="Mot de passe" required><br><br>
+        <button type="submit">Se connecter</button>
+    </form>
+
+    <br>
+    <a href="/Vendo/index.php?action=accueil">Retour à l'accueil</a>
 </body>
 </html>
