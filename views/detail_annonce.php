@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Détail de l'annonce</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendo - <?= htmlspecialchars($annonce['titre']) ?></title>
+  <link rel="stylesheet" href="/Vendo/public/css/style.css">
 </head>
 <body>
 
-    <?php if ($annonce): ?>
-        <h1><?= htmlspecialchars($annonce['titre']) ?></h1>
+<nav class="navbar">
+  <a class="navbar-logo" href="/Vendo/index.php?action=accueil">
+    <img src="/Vendo/public/vendo_logo_minimal.svg" alt="Vendo">
+  </a>
+  <div class="navbar-links">
+    <a href="/Vendo/index.php?action=accueil" class="btn-secondary">Retour</a>
+  </div>
+</nav>
 
-        <?php if (!empty($annonce['photo'])): ?>
-            <img src="/Vendo/public/uploads/<?= htmlspecialchars($annonce['photo']) ?>" width="300" alt="photo annonce">
-        <?php endif; ?>
+<div class="detail-container">
 
-        <p><strong>Prix :</strong> <?= htmlspecialchars($annonce['prix']) ?> €</p>
-        <p><strong>Description :</strong></p>
-        <p><?= nl2br(htmlspecialchars($annonce['description'])) ?></p>
+  <?php if ($annonce): ?>
 
-        <br>
-        <a href="/Vendo/index.php?action=accueil">Retour à l'accueil</a>
-    <?php else: ?>
-        <p>Annonce introuvable.</p>
+    <?php if (!empty($annonce['photo'])): ?>
+      <img class="detail-img" src="/Vendo/public/uploads/<?= htmlspecialchars($annonce['photo']) ?>" alt="photo annonce">
     <?php endif; ?>
+
+    <h1 style="font-size:24px;color:#222;"><?= htmlspecialchars($annonce['titre']) ?></h1>
+
+    <div class="detail-price"><?= htmlspecialchars($annonce['prix']) ?> €</div>
+
+    <p class="detail-description"><?= nl2br(htmlspecialchars($annonce['description'])) ?></p>
+
+    <div style="margin-top:24px;">
+      <a href="/Vendo/index.php?action=accueil" class="btn-secondary">Retour aux annonces</a>
+    </div>
+
+  <?php else: ?>
+    <div class="empty-state">Annonce introuvable.</div>
+  <?php endif; ?>
+
+</div>
 
 </body>
 </html>
