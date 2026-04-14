@@ -1,16 +1,18 @@
 <?php
+require_once __DIR__ . '/../config/db.php';
 
-
-function ajouterAnnonce($pdo, $titre, $prix, $description, $photo) {
-    $sql = "INSERT INTO annonces (titre, prix, description, photo)
-            VALUES (:titre, :prix, :description, :photo)";
+// CORRECTION : Ajout du $user_id
+function ajouterAnnonce($pdo, $titre, $prix, $description, $photo, $user_id) {
+    $sql = "INSERT INTO annonces (titre, prix, description, photo, user_id)
+            VALUES (:titre, :prix, :description, :photo, :user_id)";
     $stmt = $pdo->prepare($sql);
 
     return $stmt->execute([
         ':titre' => $titre,
         ':prix' => $prix,
         ':description' => $description,
-        ':photo' => $photo
+        ':photo' => $photo,
+        ':user_id' => $user_id
     ]);
 }
 
@@ -29,10 +31,7 @@ function recupererAnnonceParId($pdo, $id) {
 
 function modifierAnnonce($pdo, $id, $titre, $prix, $description, $photo) {
     $sql = "UPDATE annonces
-            SET titre = :titre,
-                prix = :prix,
-                description = :description,
-                photo = :photo
+            SET titre = :titre, prix = :prix, description = :description, photo = :photo
             WHERE id = :id";
     $stmt = $pdo->prepare($sql);
 

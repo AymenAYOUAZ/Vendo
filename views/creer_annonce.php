@@ -1,51 +1,46 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vendo - Déposer une annonce</title>
-  <link rel="stylesheet" href="/Vendo/public/css/style.css">
-</head>
-<body>
+<div class="container">
+    <div class="form-card">
+        <div class="form-header">
+            <h2>Vendre un article</h2>
+            <p>Remplissez les détails ci-dessous pour publier votre annonce.</p>
+        </div>
 
-<nav class="navbar">
-  <a class="navbar-logo" href="/Vendo/index.php?action=accueil">
-    <img src="/Vendo/public/vendo_logo_minimal.svg" alt="Vendo">
-  </a>
-  <div class="navbar-links">
-    <a href="/Vendo/index.php?action=accueil" class="btn-secondary">Retour</a>
-  </div>
-</nav>
+        <form action="/Vendo/controllers/AnnonceController.php" method="POST" enctype="multipart/form-data">
+            
+            <input type="hidden" name="action" value="creer">
 
-<div class="form-card">
-  <h2>Déposer une annonce</h2>
+            <div class="form-group">
+                <label for="titre">Titre de l'annonce</label>
+                <input type="text" id="titre" name="titre" placeholder="Ex: iPhone 15 Pro Max" required>
+            </div>
 
-  <form action="/Vendo/controllers/AnnonceController.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="prix">Prix de vente (€)</label>
+                <input type="number" id="prix" name="prix" step="0.01" placeholder="Ex: 850" required>
+            </div>
 
-    <div class="form-group">
-      <label for="titre">Nom de l'annonce</label>
-      <input type="text" id="titre" name="titre" placeholder="Ex: iPhone 15 Pro" required>
+            <div class="form-group">
+                <label for="description">Description détaillée</label>
+                <textarea id="description" name="description" rows="6" placeholder="État, couleur, accessoires inclus..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Photo de l'article</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                    <small style="display:block; margin-top:5px; color:#777;">Formats acceptés : JPG, PNG (Max 2Mo)</small>
+                </div>
+            </div>
+
+            <div class="form-actions" style="margin-top: 30px;">
+                <button type="submit" name="submit_annonce" class="btn-primary" style="width: 100%;">
+                    🚀 Publier l'annonce
+                </button>
+                <a href="/Vendo/index.php?action=accueil" class="btn-secondary" style="display: block; text-align: center; margin-top: 15px;">
+                    Annuler
+                </a>
+            </div>
+
+        </form>
     </div>
-
-    <div class="form-group">
-      <label for="prix">Prix (€)</label>
-      <input type="number" id="prix" name="prix" step="0.01" placeholder="Ex: 500" required>
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea id="description" name="description" rows="5" placeholder="Décrivez votre objet..." required></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="photo">Photo de l'article</label>
-      <input type="file" id="photo" name="photo" accept="image/*" required>
-    </div>
-
-    <button type="submit" name="submit_annonce" class="btn-primary">Publier l'annonce</button>
-
-  </form>
 </div>
-
-</body>
-</html>

@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+require_once '../config/db.php';
 
 require_once '../models/UserModel.php';
-require_once '../config/db.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ../index.php?action=inscription');
@@ -25,6 +23,13 @@ if (empty($username) || empty($email) || empty($mdp_clair)) {
 
 if (strlen($mdp_clair) < 10) {
     $_SESSION['error'] = "Le mot de passe doit faire au moins 10 caractères.";
+    header('Location: ../index.php?action=inscription');
+    exit();
+}
+
+$utilisateurExistant = recupererUtilisateurParEmail($pdo, $email);
+if ($utilisateurExistant) {
+    $_SESSION['error'] = "Cet email est déjà utilisé.";
     header('Location: ../index.php?action=inscription');
     exit();
 }
