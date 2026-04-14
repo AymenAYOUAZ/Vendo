@@ -19,6 +19,15 @@
                 <input type="number" id="prix" name="prix" step="0.01" placeholder="Ex: 850" required>
             </div>
 
+            <div class="form-group" style="margin-bottom: 15px;">
+                 <label for="categorie" style="display: block; margin-bottom: 5px;">Catégorie</label>
+                 <select name="categorie" id="categorie" required style="width: 100%; padding: 8px; border-radius: var(--radius-sm); border: 1px solid var(--clr-border);">
+                 <option value="Informatique">Informatique</option>
+                 <option value="Véhicules">Véhicules</option>
+                <option value="Autres">Autres</option>
+                 </select>
+              </div>
+
             <div class="form-group">
                 <label for="description">Description détaillée</label>
                 <textarea id="description" name="description" rows="6" placeholder="État, couleur, accessoires inclus..." required></textarea>

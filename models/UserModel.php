@@ -26,3 +26,30 @@ function recupererUtilisateurParEmail($pdo, $email) {
     $stmt->execute([':email' => $email]);
     return $stmt->fetch(); // Retourne l'utilisateur ou false s'il n'existe pas
 }
+
+/**
+ * Récupère uniquement le mot de passe (hashé) d'un utilisateur
+ */
+function recupererMotDePasseUtilisateur($pdo, $idu) {
+    $sql = "SELECT mot_de_passe FROM utilisateurs WHERE idu = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([(int)$idu]);
+    return $stmt->fetchColumn();
+}
+
+/**
+ * Met à jour le profil (et hache le mot de passe s'il est fourni)
+ */
+function modifierProfil($pdo, $idu, $pseudo, $email, $mdp = null) {
+    if (!empty($mdp)) {
+        // Le hachage se fait ICI, juste avant l'insertion en BDD
+        $hash = password_hash($mdp, PASSWORD_DEFAULT);
+        $sql = "UPDATE utilisateurs SET pseudo = ?, email = ?, mot_de_passe = ? WHERE idu = ?";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$pseudo, $email, $hash, $idu]);
+    } else {
+        $sql = "UPDATE utilisateurs SET pseudo = ?, email = ? WHERE idu = ?";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$pseudo, $email, $idu]);
+    }
+}

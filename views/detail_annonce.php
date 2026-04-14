@@ -22,34 +22,28 @@
                 </div>
 
                 <?php if (isset($_SESSION['user']['idu'])): ?>
+                    
                     <?php if ($_SESSION['user']['idu'] != $annonce['user_id']): ?>
-                        <div class="contact-box">
-                            <h3>Contacter le vendeur</h3>
-                            <form action="controllers/MessageController.php" method="POST">
-                                <input type="hidden" name="provenance" value="annonce">
-                                <input type="hidden" name="id_destinataire" value="<?= $annonce['user_id'] ?>">
-                                <input type="hidden" name="id_annonce" value="<?= $annonce['id'] ?>">
-                                
-                                <div class="form-group">
-                                    <textarea name="message" rows="4" placeholder="Bonjour, votre article m'intéresse..." required></textarea>
-                                </div>
-                                <button type="submit" name="envoyer_message" class="btn-primary" style="width: 100%;">
-                                    Envoyer le message
-                                </button>
-                            </form>
+                        <div class="contact-box" style="text-align: center; padding: 20px; background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md);">
+                            <h3 style="margin-bottom: 15px;">Intéressé par cet article ?</h3>
+                            <a href="index.php?action=conversation&id_annonce=<?= $annonce['id'] ?>&id_interlocuteur=<?= $annonce['user_id'] ?>" class="btn-primary">
+                                ✉️ Ouvrir la discussion
+                            </a>
                         </div>
                     <?php else: ?>
-                        <div class="owner-notice">
-                            Vous êtes l'auteur de cette annonce.
+                        <div class="owner-notice" style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid var(--clr-border); border-radius: var(--radius-md);">
+                            <p>Vous êtes l'auteur de cette annonce.</p>
                             <a href="index.php?action=modifier_annonce&id=<?= $annonce['id'] ?>" class="btn-secondary" style="margin-top: 10px; display: block; text-align: center;">Modifier l'annonce</a>
                         </div>
                     <?php endif; ?>
+
                 <?php else: ?>
-                    <div class="login-notice">
+                    <div class="login-notice" style="text-align: center; padding: 20px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: var(--radius-md);">
                         <p>Vous devez être connecté pour contacter le vendeur.</p>
                         <a href="index.php?action=connexion" class="btn-secondary">Se connecter</a>
                     </div>
                 <?php endif; ?>
+
             </div>
         </div>
     <?php else: ?>

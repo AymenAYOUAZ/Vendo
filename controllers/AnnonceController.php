@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_annonce'])) {
     $description = trim($_POST['description']);
     $user_id = $_SESSION['user']['idu']; 
     $photoName = '';
+    $categorie = $_POST['categorie'] ?? 'Autres';
 
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] === 0) {
         $result = uploaderPhoto($_FILES['photo']);
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_annonce'])) {
         exit();
     }
 
-    if (ajouterAnnonce($pdo, $titre, $prix, $description, $photoName, $user_id)) {
+    if (ajouterAnnonce($pdo, $titre, $prix, $description, $photoName, $user_id, $categorie)) {
         $_SESSION['success'] = "Annonce publiée avec succès !";
         header('Location: ../index.php?action=accueil');
         exit();
@@ -96,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $titre = trim($_POST['titre']);
     $prix = trim($_POST['prix']);
     $description = trim($_POST['description']);
+    $categorie = $_POST['categorie'] ?? 'Autres';
 
     $ancienneAnnonce = recupererAnnonceParId($pdo, $id);
 
@@ -113,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             }
         }
 
-        if (modifierAnnonce($pdo, $id, $titre, $prix, $description, $photoName)) {
+        if (modifierAnnonce($pdo, $id, $titre, $prix, $description, $photoName, $categorie)) {
             $_SESSION['success'] = "Annonce mise à jour !";
             header('Location: ../index.php?action=accueil');
             exit();
