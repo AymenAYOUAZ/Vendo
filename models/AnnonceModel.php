@@ -92,7 +92,7 @@ function dejaVu($pdo, $id_annonce, $id_utilisateur) {
 }
 
 /**
- * Récupère les 5 annonces les plus consultées
+ * Récupère les 8 annonces les plus consultées
  */
 function recupererAnnoncesPopulaires($pdo) {
     $sql = "SELECT a.*, COUNT(v.id) as nb_vues 
