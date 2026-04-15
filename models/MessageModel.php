@@ -68,10 +68,13 @@ function recupererConversation($pdo, $mon_id, $id_interlocuteur, $id_annonce) {
  * Compte le nombre total de messages non lus pour un utilisateur
  */
 function compterMessagesNonLus($pdo, $id_utilisateur) {
-    $sql = "SELECT COUNT(*) FROM messages WHERE id_destinataire = ? AND est_lu = 0";
+    // Vérification de sécurité : si l'ID est vide, on retourne 0
+    if (!$id_utilisateur) return 0;
+
+    $sql = "SELECT COUNT(*) FROM messages WHERE id_destinataire = :id AND est_lu = 0";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([(int)$id_utilisateur]);
-    return $stmt->fetchColumn();
+    $stmt->execute([':id' => (int)$id_utilisateur]);
+    return (int)$stmt->fetchColumn();
 }
 
 /**

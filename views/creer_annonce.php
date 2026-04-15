@@ -22,9 +22,14 @@
             <div class="form-group" style="margin-bottom: 15px;">
                  <label for="categorie" style="display: block; margin-bottom: 5px;">Catégorie</label>
                  <select name="categorie" id="categorie" required style="width: 100%; padding: 8px; border-radius: var(--radius-sm); border: 1px solid var(--clr-border);">
-                 <option value="Informatique">Informatique</option>
+                 <option value="Autres">Sélectionnez une catégorie</option>
+                 <option value="Maison & Jardin">Maison & Jardin</option>
+                 <option value="Mode">Mode</option>
+                 <option value="Electronique">Electronique</option>
+                 <option value="Téléphonie">Téléphonie</option>
                  <option value="Véhicules">Véhicules</option>
-                <option value="Autres">Autres</option>
+                 <option value="Motos">Motos</option>
+                 <option value="Autres">Autres</option>
                  </select>
               </div>
 

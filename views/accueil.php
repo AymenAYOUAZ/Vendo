@@ -22,8 +22,12 @@
 
         <select name="categorie" style="padding: 8px; border-radius: var(--radius-sm); border: 1px solid var(--clr-border);">
             <option value="">Toutes les catégories</option>
-            <option value="Informatique" <?= (isset($_GET['categorie']) && $_GET['categorie'] === 'Informatique') ? 'selected' : '' ?>>Informatique</option>
+            <option value="Maison & Jardin" <?= (isset($_GET['categorie']) && $_GET['categorie'] === 'Maison & Jardin') ? 'selected' : '' ?>>Maison & Jardin</option>
+            <option value="Mode" <?= (isset($_GET['categorie']) && $_GET['categorie'] === 'Mode') ? 'selected' : '' ?>>Mode</option>
+            <option value="Electronique" <?= (isset($_GET['categorie']) && $_GET['categorie'] === 'Electronique') ? 'selected' : '' ?>>Electronique</option>
+            <option value="Téléphonie" <?= (isset($_GET['categorie']) && $_GET['categorie'] === 'Téléphonie') ? 'selected' : '' ?>>Téléphonie</option>
             <option value="Véhicules" <?= (isset($_GET['categorie']) && $_GET['categorie'] === 'Véhicules') ? 'selected' : '' ?>>Véhicules</option>
+            <option value="Motos" <?= (isset($_GET['categorie']) && $_GET['categorie'] === 'Motos') ? 'selected' : '' ?>>Motos</option>
             <option value="Autres" <?= (isset($_GET['categorie']) && $_GET['categorie'] === 'Autres') ? 'selected' : '' ?>>Autres</option>
         </select>
 

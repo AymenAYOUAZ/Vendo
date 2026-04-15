@@ -24,8 +24,8 @@
                         <div style="font-size: 0.8rem; color: gray;">👁️ <?= compterVues($pdo, $annonce['id']) ?> vues</div>
                     </div>
                 </a>
-
-                <div class="card-actions" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-top: 1px solid var(--clr-border);">
+              
+               <div class="card-actions" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-top: 1px solid var(--clr-border);">
                     <div>
                         <?php if (isset($_SESSION['user']['idu'])): ?>
                             <?php $dejaFavori = estFavori($pdo, $_SESSION['user']['idu'], $annonce['id']); ?>
@@ -33,7 +33,13 @@
                                 <?= $dejaFavori ? '❤️' : '🤍' ?>
                             </a>
                         <?php endif; ?>
-                    </div>
+                
+                         
+                           <a href="index.php?action=detail_annonce&id=<?= $annonce['id'] ?>" style="text-decoration: none; color: var(--clr-primary); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+                        | Consulter ➔
+                          </a>
+                  </div>
+                 
 
                     <?php if (isset($_SESSION['user']['idu']) && $_SESSION['user']['idu'] == $annonce['user_id']): ?>
                         <div style="display: flex; gap: 10px;">

@@ -100,7 +100,7 @@ function recupererAnnoncesPopulaires($pdo) {
             LEFT JOIN vues_annonces v ON a.id = v.id_annonce 
             GROUP BY a.id 
             ORDER BY nb_vues DESC 
-            LIMIT 20";
+            LIMIT 8";
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 

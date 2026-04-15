@@ -1,8 +1,9 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
+/* //ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+*/
 
 // 1. Connexion BDD et Modèles
 require_once __DIR__ . '/config/db.php';
@@ -48,10 +49,9 @@ $action = $_GET['action'] ?? 'accueil';
                 </div>
                 <a href="index.php?action=mes_favoris" class="btn-secondary">❤️ Mes Favoris</a>
                 
-                <a href="index.php?action=messagerie" class="btn-secondary" style="position: relative;">
-                    💬 Messages
+                <a href="index.php?action=messagerie" class="btn-secondary" style="position: relative;">💬 Messages
                     <?php if ($nb_non_lus > 0): ?>
-                        <span style="position: absolute; top: -10px; right: -10px; background: #ff4757; color: white; font-size: 0.75rem; min-width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid white; font-weight: bold;">
+                        <span class="badge" style="background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px;">
                             <?= $nb_non_lus ?>
                         </span>
                     <?php endif; ?>

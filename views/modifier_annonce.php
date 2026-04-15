@@ -19,11 +19,15 @@
 
             <div class="form-group" style="margin-bottom: 15px;">
                        <label for="categorie" style="display: block; margin-bottom: 5px;">Catégorie</label>
-                       <select name="categorie" id="categorie" required style="width: 100%; padding: 8px; border-radius: var(--radius-sm); border: 1px solid var(--clr-border);">
-                 <option value="Informatique" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Informatique') ? 'selected' : '' ?>>Informatique</option>
-                 <option value="Véhicules" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Véhicules') ? 'selected' : '' ?>>Véhicules</option>
-                 <option value="Autres" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Autres') ? 'selected' : '' ?>>Autres</option>
-             </select>
+                       <select name="categorie" id="categorie" required style="width: 100%; padding: 8px; border-radius: var(--radius-sm); border: 1px solid var(--clr-border);">                        
+                    <option value="Maison & Jardin" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Maison & Jardin') ? 'selected' : '' ?>>Maison & Jardin</option>
+                    <option value="Mode" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Mode') ? 'selected' : '' ?>>Mode</option>
+                    <option value="Electronique" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Electronique') ? 'selected' : '' ?>>Electronique</option>
+                    <option value="Téléphonie" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Téléphonie') ? 'selected' : '' ?>>Téléphonie</option>
+                    <option value="Véhicules" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Véhicules') ? 'selected' : '' ?>>Véhicules</option>
+                    <option value="Motos" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Motos') ? 'selected' : '' ?>>Motos</option>
+                    <option value="Autres" <?= (isset($annonce['categorie']) && $annonce['categorie'] === 'Autres') ? 'selected' : '' ?>>Autres</option>
+                </select>
             </div>
 
             <div class="form-group">
